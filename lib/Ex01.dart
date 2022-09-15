@@ -1,5 +1,6 @@
 // NÃO PODE SER MODIFICADO
 // -------------------------------------------------------------
+
 import 'dart:math' as math;
 
 void main() {
@@ -25,28 +26,33 @@ MeioDeComunicacao aleatorio() {
 // ADICIONAR IMPLEMENTAÇÃO RESTANTE ABAIXO DESSA LINHA
 // -------------------------------------------------------------
 
+String aleatorioreal = aleatorio() as String;
+
 MeioDeComunicacao Telefone() {
-  return Telefone();
+  return MeioDeComunicacao();
 }
 
 MeioDeComunicacao Celular() {
-  return Celular();
+  return MeioDeComunicacao();
 }
 
 MeioDeComunicacao Orelhao() {
-  return Orelhao();
+  return MeioDeComunicacao();
 }
 
 class MeioDeComunicacao {
+  //void aleatorio(MeioDeComunicacao) {
+  // print("$MeioDeComunicacao");
+  //}
+
   void fazerLigacao(String tel) {
-    final a = "dsakldasjkl";
-    /*List<MeioDeComunicacao> ran = aleatorio();*/
-    /*print(ran.toString());*/
+    //final a = "dsakldasjkl";
+    //List<MeioDeComunicacao> ran = aleatorio();
+    //print(ran.toString());
     print(aleatorio());
 
-    print("Fazendo ligação");
-    print("[{$a}] Ligando para $tel");
+    print("[ $MeioDeComunicacao ] Ligando para $tel");
   }
-
-  /*MeioDeComunicacao(this.fazerLigacao) {}*/
 }
+
+  // MeioDeComunicacao(this.fazerLigacao) {}
