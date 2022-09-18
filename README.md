@@ -10,7 +10,7 @@
 
 2. Trabalhando com refatoração de programas, iniciante.
 
-3. Biblioteca de musicas.
+3. Biblioteca de musicas. -- *em andameto*
 
 4. Trabalhando com refatoração de programas, intermediario.
 
