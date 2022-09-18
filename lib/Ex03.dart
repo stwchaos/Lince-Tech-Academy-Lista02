@@ -15,7 +15,7 @@ void main() {
   musica2.nomeDoArtista = "Guns N Roses";
   musica2.duracaoEmSegundos = "279 segundos";
 
-  print("Digita a porra da musica: ");
+  print("Digita o nome da música, do album ou do artista para buscar: ");
   String? opcao = stdin.readLineSync();
   List<Musica> musicas = [musica1, musica2];
 
