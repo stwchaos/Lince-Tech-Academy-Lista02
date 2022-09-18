@@ -1,3 +1,5 @@
+//EM ANDAMENTO
+
 // NÃO PODE SER MODIFICADO
 // -------------------------------------------------------------
 
@@ -26,33 +28,51 @@ MeioDeComunicacao aleatorio() {
 // ADICIONAR IMPLEMENTAÇÃO RESTANTE ABAIXO DESSA LINHA
 // -------------------------------------------------------------
 
-String aleatorioreal = aleatorio() as String;
+//String aleatorioreal = aleatorio(Telefone, Celular, Orelhao) as String;
 
 MeioDeComunicacao Telefone() {
   return MeioDeComunicacao();
+
+  //manipulaçao de string - toUpperCase()
 }
 
 MeioDeComunicacao Celular() {
   return MeioDeComunicacao();
+  //manipulaçao de string - toUpperCase()
 }
 
 MeioDeComunicacao Orelhao() {
   return MeioDeComunicacao();
+  //manipulaçao de string - toUpperCase()
 }
 
 class MeioDeComunicacao {
-  //void aleatorio(MeioDeComunicacao) {
-  // print("$MeioDeComunicacao");
-  //}
+//return aleatorio();
+//{math.Random(math.Random(MeioDeComunicacao)};
+//}
+  aleatorio(meiosDeComunicacao) {
+    meiosDeComunicacao(this.Telefone, this.Celular, this.Orelhao);
 
-  void fazerLigacao(String tel) {
+    print(meiosDeComunicacao);
+//  return MeioDeComunicacao;
+//  return Telefone();
+//  return Orelhao();
+//  return Celular();
+  }
+
+  fazerLigacao(String tel) {
     //final a = "dsakldasjkl";
     //List<MeioDeComunicacao> ran = aleatorio();
     //print(ran.toString());
-    print(aleatorio());
+    // print(aleatorio());
 
-    print("[ $MeioDeComunicacao ] Ligando para $tel");
+    //void aleatorio(MeioDeComunicacao aleatorio) {
+    //final aleatorioNovo = aleatorio;
+    //}
+
+    print(" ${aleatorio}  Ligando para $tel");
   }
 }
 
-  // MeioDeComunicacao(this.fazerLigacao) {}
+//{math.Random(math.Random(MeioDeComunicacao)}
+// MeioDeComunicacao(this.fazerLigacao) {}
