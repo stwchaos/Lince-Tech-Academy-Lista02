@@ -1,8 +1,7 @@
-//EM ANDAMENTO
+import 'dart:io';
 
 // NÃO PODE SER MODIFICADO
 // -------------------------------------------------------------
-
 import 'dart:math' as math;
 
 void main() {
@@ -28,51 +27,39 @@ MeioDeComunicacao aleatorio() {
 // ADICIONAR IMPLEMENTAÇÃO RESTANTE ABAIXO DESSA LINHA
 // -------------------------------------------------------------
 
-//String aleatorioreal = aleatorio(Telefone, Celular, Orelhao) as String;
-
-MeioDeComunicacao Telefone() {
-  return MeioDeComunicacao();
-
-  //manipulaçao de string - toUpperCase()
+class Telefone extends MeioDeComunicacao {
+  printar(String tel) {
+    stdout.write("[TELEFONE] ");
+  }
 }
 
-MeioDeComunicacao Celular() {
-  return MeioDeComunicacao();
-  //manipulaçao de string - toUpperCase()
+class Celular extends MeioDeComunicacao {
+  printar(String tel) {
+    stdout.write("[CELULAR] ");
+  }
 }
 
-MeioDeComunicacao Orelhao() {
-  return MeioDeComunicacao();
-  //manipulaçao de string - toUpperCase()
+class Orelhao extends MeioDeComunicacao {
+  printar(String tel) {
+    stdout.write("[ORELHÃO] ");
+  }
 }
 
 class MeioDeComunicacao {
-//return aleatorio();
-//{math.Random(math.Random(MeioDeComunicacao)};
-//}
-  aleatorio(meiosDeComunicacao) {
-    meiosDeComunicacao(this.Telefone, this.Celular, this.Orelhao);
-
-    print(meiosDeComunicacao);
-//  return MeioDeComunicacao;
-//  return Telefone();
-//  return Orelhao();
-//  return Celular();
-  }
-
   fazerLigacao(String tel) {
-    //final a = "dsakldasjkl";
-    //List<MeioDeComunicacao> ran = aleatorio();
-    //print(ran.toString());
-    // print(aleatorio());
+    String aleatorioS = aleatorio().toString();
+    int compare = 0;
 
-    //void aleatorio(MeioDeComunicacao aleatorio) {
-    //final aleatorioNovo = aleatorio;
-    //}
+    if (compare == aleatorioS.compareTo("Instance of 'Telefone'")) {
+      Telefone().printar(tel);
+    }
+    if (compare == aleatorioS.compareTo("Instance of 'Celular'")) {
+      Celular().printar(tel);
+    }
+    if (compare == aleatorioS.compareTo("Instance of 'Orelhao'")) {
+      Orelhao().printar(tel);
+    }
 
-    print(" ${aleatorio}  Ligando para $tel");
+    stdout.write("Ligando para $tel ");
   }
 }
-
-//{math.Random(math.Random(MeioDeComunicacao)}
-// MeioDeComunicacao(this.fazerLigacao) {}
