@@ -1,6 +1,84 @@
 //EM ANDAMENTO
+void main() {
+  final biblioteca = BibliotecaDeMusicas(['Emerald Sword','Rhapsody of Fire', 'Legendary Years', 263]);
 
-import 'dart:io';
+  biblioteca.console();
+}
+
+class BibliotecaDeMusicas {
+  BibliotecaDeMusicas(this.musicas);
+
+  List<Musicas> musicas;
+
+  void console() {
+    print('Biblioteca: ');
+
+  }
+}
+
+class Musicas {
+  Musicas(this.tituloDaMusica, this.nomeDoArtista, this.nomeDoAlbum, this.duracaoEmSegundos)
+
+  String nomeDoArtista, nomeDoAlbum, tituloDaMusica;
+  int duracaoEmSegundos;
+
+  @override
+  String toString() {
+    return '';
+  }
+}
+
+
+  buscar(String texto) {
+    int i = 0;
+    String opcao = ' ';
+    int x = 0;
+    nomeDaMusica.forEach((element) {
+      opcao = 'Musica';
+      if (0 == texto.compareTo(nomeDaMusica[i])) {
+        musicaSelecionado(x, i, texto, opcao);
+        x++;
+      }
+      i++;
+    });
+    i = 0;
+
+    nomeDoArtista.forEach((element) {
+      opcao = 'Artista';
+      if (0 == texto.compareTo(nomeDoArtista[i])) {
+        musicaSelecionado(x, i, texto, opcao);
+        x++;
+      }
+      i++;
+    });
+    i = 0;
+
+    nomeDoAlbum.forEach((element) {
+      opcao = 'Album';
+      if (0 == texto.compareTo(nomeDoAlbum[i])) {
+        musicaSelecionado(x, i, texto, opcao);
+        x++;
+      }
+      i++;
+    });
+  }
+
+  musicaSelecionado(int x, int i, String texto, opcao) {
+    if (x == 0) {
+      print('Músicas encontradas procurando pelo $opcao $texto\n');
+      x++;
+    }
+
+    print('Titulo: ${nomeDaMusica[i]}\n'
+        'Artista: ${nomeDoArtista[i]}\n'
+        'Album: ${nomeDoAlbum[i]}\n'
+        'Duração em Segundos: ${duracaoEmSegundos[i]}\n');
+  }
+
+
+
+
+/*import 'dart:io';
 
 void main() {
   Musica musica1 = Musica();
@@ -51,4 +129,4 @@ class Musica {
   String get getDuracao => duracaoEmSegundos;
 
   //Musica({this.tituloMusica,this.nomeDoAlbum,this.nomeDoArtista});
-}
+}*/

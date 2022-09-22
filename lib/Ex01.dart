@@ -28,19 +28,19 @@ MeioDeComunicacao aleatorio() {
 // -------------------------------------------------------------
 
 class Telefone extends MeioDeComunicacao {
-  printar(String tel) {
+  console(String tel) {
     stdout.write("[TELEFONE] ");
   }
 }
 
 class Celular extends MeioDeComunicacao {
-  printar(String tel) {
+  console(String tel) {
     stdout.write("[CELULAR] ");
   }
 }
 
 class Orelhao extends MeioDeComunicacao {
-  printar(String tel) {
+  console(String tel) {
     stdout.write("[ORELHÃO] ");
   }
 }
@@ -51,13 +51,13 @@ class MeioDeComunicacao {
     int compare = 0;
 
     if (compare == aleatorioS.compareTo("Instance of 'Telefone'")) {
-      Telefone().printar(tel);
+      Telefone().console(tel);
     }
     if (compare == aleatorioS.compareTo("Instance of 'Celular'")) {
-      Celular().printar(tel);
+      Celular().console(tel);
     }
     if (compare == aleatorioS.compareTo("Instance of 'Orelhao'")) {
-      Orelhao().printar(tel);
+      Orelhao().console(tel);
     }
 
     stdout.write("Ligando para $tel ");
