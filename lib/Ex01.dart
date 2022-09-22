@@ -1,5 +1,3 @@
-import 'dart:io';
-
 // NÃO PODE SER MODIFICADO
 // -------------------------------------------------------------
 import 'dart:math' as math;
@@ -27,39 +25,27 @@ MeioDeComunicacao aleatorio() {
 // ADICIONAR IMPLEMENTAÇÃO RESTANTE ABAIXO DESSA LINHA
 // -------------------------------------------------------------
 
+class MeioDeComunicacao {
+  void fazerLigacao(String tel) {}
+}
+
 class Telefone extends MeioDeComunicacao {
-  console(String tel) {
-    stdout.write("[TELEFONE] ");
+  @override
+  void fazerLigacao(String tel) {
+    print("[TELEFONE] Ligando para $tel ");
   }
 }
 
 class Celular extends MeioDeComunicacao {
-  console(String tel) {
-    stdout.write("[CELULAR] ");
+  @override
+  void fazerLigacao(String tel) {
+    print("[CELULAR] Ligando para $tel ");
   }
 }
 
 class Orelhao extends MeioDeComunicacao {
-  console(String tel) {
-    stdout.write("[ORELHÃO] ");
-  }
-}
-
-class MeioDeComunicacao {
-  fazerLigacao(String tel) {
-    String aleatorioS = aleatorio().toString();
-    int compare = 0;
-
-    if (compare == aleatorioS.compareTo("Instance of 'Telefone'")) {
-      Telefone().console(tel);
-    }
-    if (compare == aleatorioS.compareTo("Instance of 'Celular'")) {
-      Celular().console(tel);
-    }
-    if (compare == aleatorioS.compareTo("Instance of 'Orelhao'")) {
-      Orelhao().console(tel);
-    }
-
-    stdout.write("Ligando para $tel ");
+  @override
+  void fazerLigacao(String tel) {
+    print("[ORELHÃO] Ligando para $tel ");
   }
 }
