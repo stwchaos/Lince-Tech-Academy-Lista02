@@ -1,27 +1,67 @@
-//EM ANDAMENTO
-
+//import 'dart:ffi';
 import 'dart:math';
 
 void main() {
+  final random = Random();
   final pessoa = Pessoa();
-  final fornecedor = FornecedorDeBebidas();
-  final fornecedor1 = FornecedorDeSanduiches();
-  final fornecedor2 = FornecedorDeBolos();
-  final fornecedor3 = FornecedorDeSaladas();
-  final fornecedor4 = FornecedorDePetiscos();
-  final fornecedor5 = FornecedorDeUltraCaloricos();
-// Consumindo produtos fornecidos
-
+  List fornecedores = [
+    Fornecedor(<Produto>[
+      Produto('Agua', 0),
+      Produto('Refrigerante', 200),
+      Produto('Suco de fruta', 100),
+      Produto('Energetico', 135),
+      Produto('Café', 60),
+      Produto('Cha', 35),
+    ]),
+    Fornecedor(<Produto>[
+      Produto('X-salada', 1800),
+      Produto('X-burguer', 1000),
+      Produto('X-filé', 567),
+      Produto('X-tudo', 800)
+    ]),
+    Fornecedor(<Produto>[
+      Produto('Bolo de chocolate', 220),
+      Produto('Bolo de baunilha', 252),
+      Produto('Bolo de fubá', 125),
+      Produto('Bolo de morango', 134),
+    ]),
+    Fornecedor(<Produto>[
+      Produto('Salada tropical', 79),
+      Produto('Salada mix', 100),
+      Produto('Salada com salmão', 150),
+      Produto('Salada da horta', 67),
+    ]),
+    Fornecedor(<Produto>[
+      Produto('Porção de camarão', 230),
+      Produto('Porção de batata', 256),
+      Produto('Porção de polenta frita', 300),
+      Produto('Coração', 340)
+    ]),
+    Fornecedor(<Produto>[
+      Produto('Caipirinha', 1987),
+      Produto('Acarajé', 1997),
+      Produto('Sorvete', 1789),
+      Produto('Picanha', 1990)
+    ])
+  ];
   for (var i = 0; i < 5; i++) {
+    final fornecedor = fornecedores[random.nextInt(fornecedores.length)];
     pessoa.refeicao(fornecedor);
-    /*pessoa.refeicao(fornecedor1);
-    pessoa.refeicao(fornecedor2);
-    pessoa.refeicao(fornecedor3);
-    pessoa.refeicao(fornecedor4);
-    pessoa.refeicao(fornecedor5);*/
   }
+  pessoa.info();
 
-  pessoa.informacoes(Status);
+  pessoa.consoleCaloriasIniciais();
+
+  pessoa.totalDeCalorias();
+
+  pessoa.consoleStatus(Status.deficit);
+
+  pessoa.precisaDeRefeicoes(true, Status.deficitExtremo, Status.deficit,
+      Status.satisfeito, Status.excesso, 0, Status.deficit);
+  //bool isPrecisaRefeicoes, Status deficitExtremo, Status deficit, int numeroRefeicoes
+
+  pessoa.numeroDeRefeicoes(0);
+  //Pessoa numeroRefeicoes
 }
 
 class Produto {
@@ -34,119 +74,124 @@ class Produto {
   final int calorias;
 }
 
-class FornecedorDeBebidas extends Pessoa {
-  final _random = Random();
-  final _bebidasDisponiveis = <Produto>[
-    Produto('Agua', 0),
-    Produto('Refrigerante', 200),
-    Produto('Suco de fruta', 100),
-    Produto('Energetico', 135),
-    Produto('Café', 60),
-    Produto('Cha', 35),
-  ];
+class Fornecedor {
+  Fornecedor(this._produtosDisponiveis);
 
-  /// Retorna um produto que pode ser consumido por um consumidor
+  final _random = Random();
+  final List<Produto> _produtosDisponiveis;
+
   Produto fornecer() {
-    return _bebidasDisponiveis[_random.nextInt(_bebidasDisponiveis.length)];
-  }
-}
-
-class FornecedorDeSanduiches extends Pessoa {
-  final _random = Random();
-  final _cardapioSanduiches = <Produto>[
-    Produto('X-salada', 1800),
-    Produto('X-burguer', 1000),
-    Produto('X-filé', 567),
-    Produto('X-tudo', 800)
-  ];
-
-  Produto fornecedor2() {
-    return _cardapioSanduiches[_random.nextInt(_cardapioSanduiches.length)];
-  }
-}
-
-class FornecedorDeBolos extends Pessoa {
-  final _random = Random();
-  final _cardapioBolos = <Produto>[
-    Produto('Bolo de chocolate', 220),
-    Produto('Bolo de baunilha', 252),
-    Produto('Bolo de fubá', 125),
-    Produto('Bolo de morango', 134)
-  ];
-
-  Produto fornecedor3() {
-    return _cardapioBolos[_random.nextInt(_cardapioBolos.length)];
-  }
-}
-
-class FornecedorDeSaladas extends Pessoa {
-  final _random = Random();
-  final _cardapioSaladas = <Produto>[
-    Produto('Salada tropical', 79),
-    Produto('Salada mix', 100),
-    Produto('Salada com salmão', 150),
-    Produto('Salada da horta', 67)
-  ];
-
-  Produto fornecedor4() {
-    return _cardapioSaladas[_random.nextInt(_cardapioSaladas.length)];
-  }
-}
-
-class FornecedorDePetiscos extends Pessoa {
-  final _random = Random();
-  final _cardapioPetiscos = <Produto>[
-    Produto('Porção de camarão', 230),
-    Produto('Porção de batata', 256),
-    Produto('Porção de polenta frita', 300),
-    Produto('Coração', 340)
-  ];
-
-  Produto fornecedor5() {
-    return _cardapioPetiscos[_random.nextInt(_cardapioPetiscos.length)];
-  }
-}
-
-class FornecedorDeUltraCaloricos extends Pessoa {
-  final _random = Random();
-  final _cardapioCaloricos = <Produto>[
-    Produto('Caipirinha', 987),
-    Produto('Acarajé', 897),
-    Produto('Sorvete', 789),
-    Produto('Picanha', 890)
-  ];
-
-  Produto fornecedor6() {
-    return _cardapioCaloricos[_random.nextInt(_cardapioCaloricos.length)];
+    return _produtosDisponiveis[_random.nextInt(_produtosDisponiveis.length)];
   }
 }
 
 class Pessoa {
+  late Status status;
+
+  int numeroRefeicoes = 0;
+
+  void refeicao(fornecedor) {
+    final produto = fornecedor.fornecer();
+    print('Consumindo: ${produto.nome}, contém ${produto.calorias} calororias');
+
+    _caloriasConsumidas = produto.calorias;
+  }
+
   // Acumulador de calorias
+
   int _caloriasConsumidas = 0;
 
-  /// Imprime as informações desse consumidor
-  informacoes(Status) {
-    if (_caloriasConsumidas <= 500) {
-      print('Deficit extremo de calorias');
-    } else if (_caloriasConsumidas <= 1800) {
-      print('Deficit de calorias');
-    } else if (_caloriasConsumidas <= 2500) {
-      print('Pessoa está satisfeita');
-    } else if (_caloriasConsumidas > 2500) {
-      print('Excesso de calorias');
-    }
+  // Gera calorias iniciais aleatorimente
+  final int _caloriasInicial = Random().nextInt(2090);
 
+  int getTotalDeCalorias() {
+    int totalDeCalorias = _caloriasConsumidas + _caloriasInicial;
+    return totalDeCalorias;
+  }
+
+  //
+  void totalDeCalorias() {
+    print(
+        "Total de calorias da pessoa após refeição: ${_caloriasConsumidas + _caloriasInicial}");
+  }
+
+  /// Imprime as informações desse consumidor
+  void info() {
     print('Calorias consumidas: $_caloriasConsumidas');
   }
 
-  /// Consome um produto e aumenta o numero de calorias
-  void refeicao(FornecedorDeBebidas fornecedor) {
+  void consoleCaloriasIniciais() {
+    print("Calorias iniciais: $_caloriasInicial");
+  }
+
+  /// Consome uma bebida e aumenta o numero de calorias
+  void refeicoes(Fornecedor fornecedor) {
     final produto = fornecedor.fornecer();
     print('Consumindo ${produto.nome} (${produto.calorias} calorias)');
 
     _caloriasConsumidas += produto.calorias;
+
+    if (getTotalDeCalorias() <= 500) {
+      status = Status.deficitExtremo;
+    } else if (getTotalDeCalorias() > 500 && getTotalDeCalorias() <= 1800) {
+      status = Status.deficit;
+    } else if (getTotalDeCalorias() > 1800 && getTotalDeCalorias() <= 2500) {
+      status = Status.satisfeito;
+    } else if (getTotalDeCalorias() > 2500) {
+      status = Status.excesso;
+    }
   }
+
+  /////ERROS OCORREM A PARTIR DAQUI
+
+  //não modifica o status
+  void consoleStatus(Status status) {
+    //consoleStatus(this.status); -> informa que status não foi inicializado. Não sei como inicializar ele
+    switch (status) {
+      case Status.deficitExtremo:
+        print("Status: Deficit extremo de calorias");
+        break;
+      case Status.deficit:
+        print("Status: Deficit de calorias");
+        break;
+      case Status.satisfeito:
+        print("Status: Pessoa satisfeita");
+        break;
+      case Status.excesso:
+        print("Status: Excesso de calorias");
+    }
+  }
+
+  //Não modifica o bool, fica sempre no false
+  void precisaDeRefeicoes(
+      bool isPrecisaRefeicoes,
+      Status deficitExtremo,
+      Status deficit,
+      Status satisfeito,
+      Status excesso,
+      int numeroRefeicoes,
+      Status status) {
+    if (status == deficitExtremo || status == deficit) {
+      isPrecisaRefeicoes = false;
+      print('Precisa de mais refeições: $isPrecisaRefeicoes');
+      /*numeroRefeicoes++;
+      numeroDeRefeicoes(this.numeroRefeicoes);*/
+    } else if (status == satisfeito || status == excesso) {
+      isPrecisaRefeicoes = true;
+      print('Precisa de mais refeições: $isPrecisaRefeicoes');
+      /*numeroRefeicoes++;
+      numeroDeRefeicoes(this.numeroRefeicoes);*/
+    }
+  }
+
+  //calculo não realizado
+  void numeroDeRefeicoes(int numeroRefeicoes) =>
+      print("Numero de refeições: $numeroRefeicoes");
 }
 
-enum Status { deficitExtremo, deficit, satisfeita, excesso }
+enum Status {
+  deficitExtremo,
+  deficit,
+  satisfeito,
+  excesso,
+}

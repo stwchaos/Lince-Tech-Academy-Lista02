@@ -8,10 +8,10 @@
 
 1. ~~Utilizando os conceitos de orientação a objetos, complete o programa sem alterar o código já existente, para que o programa imprima aleatoriamente no console uma das tres saidas abaixo.~~
 
-2. Trabalhando com refatoração de programas, iniciante. -- *em andamento*
+2. ~~Trabalhando com refatoração de programas, iniciante.~~
 
-3. Biblioteca de musicas. -- *em andameto*
+3. ~~Biblioteca de musicas.~~
 
-4. Trabalhando com refatoração de programas, intermediario.
+4. ~~Trabalhando com refatoração de programas, intermediario.~~
 
 
