@@ -1,4 +1,3 @@
-//import 'dart:ffi';
 import 'dart:math';
 
 void main() {
@@ -44,24 +43,25 @@ void main() {
       Produto('Picanha', 1990)
     ])
   ];
+
+  var numeroRefeicoes = 0;
   for (var i = 0; i < 5; i++) {
+    if (!pessoa.precisaRefeicao) {
+      continue;
+    }
+
     final fornecedor = fornecedores[random.nextInt(fornecedores.length)];
     pessoa.refeicao(fornecedor);
+    numeroRefeicoes++;
   }
+
   pessoa.info();
-
   pessoa.consoleCaloriasIniciais();
-
   pessoa.totalDeCalorias();
-
-  pessoa.consoleStatus(Status.deficit);
-
+  pessoa.consoleStatus();
+  pessoa.numeroDeRefeicoes(numeroRefeicoes);
   pessoa.precisaDeRefeicoes(true, Status.deficitExtremo, Status.deficit,
       Status.satisfeito, Status.excesso, 0, Status.deficit);
-  //bool isPrecisaRefeicoes, Status deficitExtremo, Status deficit, int numeroRefeicoes
-
-  pessoa.numeroDeRefeicoes(0);
-  //Pessoa numeroRefeicoes
 }
 
 class Produto {
@@ -86,23 +86,54 @@ class Fornecedor {
 }
 
 class Pessoa {
+  Pessoa() {
+    _caloriasInicial = Random().nextInt(100).toInt();
+
+    if (_caloriasInicial <= 500) {
+      status = Status.deficitExtremo;
+    } else if (_caloriasInicial <= 1800) {
+      status = Status.deficit;
+    } else if (_caloriasInicial <= 2500) {
+      status = Status.satisfeito;
+    } else {
+      status = Status.excesso;
+    }
+  }
+
   late Status status;
 
   int numeroRefeicoes = 0;
 
-  void refeicao(fornecedor) {
+  int _caloriasInicial = 0;
+
+  final lista = <int>[];
+
+  void refeicao(Fornecedor fornecedor) {
     final produto = fornecedor.fornecer();
     print('Consumindo: ${produto.nome}, contém ${produto.calorias} calororias');
 
-    _caloriasConsumidas = produto.calorias;
+    _caloriasConsumidas += produto.calorias;
+
+    final total = getTotalDeCalorias();
+    if (total <= 500) {
+      status = Status.deficitExtremo;
+    } else if (total <= 1800) {
+      status = Status.deficit;
+    } else if (total <= 2500) {
+      status = Status.satisfeito;
+    } else {
+      status = Status.excesso;
+    }
   }
 
   // Acumulador de calorias
 
   int _caloriasConsumidas = 0;
 
-  // Gera calorias iniciais aleatorimente
-  final int _caloriasInicial = Random().nextInt(2090);
+  bool get precisaRefeicao =>
+      status == Status.deficitExtremo || status == Status.deficit;
+
+  // Gera calorias iniciais aleatorimente;
 
   int getTotalDeCalorias() {
     int totalDeCalorias = _caloriasConsumidas + _caloriasInicial;
@@ -142,11 +173,7 @@ class Pessoa {
     }
   }
 
-  /////ERROS OCORREM A PARTIR DAQUI
-
-  //não modifica o status
-  void consoleStatus(Status status) {
-    //consoleStatus(this.status); -> informa que status não foi inicializado. Não sei como inicializar ele
+  void consoleStatus() {
     switch (status) {
       case Status.deficitExtremo:
         print("Status: Deficit extremo de calorias");
@@ -174,17 +201,12 @@ class Pessoa {
     if (status == deficitExtremo || status == deficit) {
       isPrecisaRefeicoes = false;
       print('Precisa de mais refeições: $isPrecisaRefeicoes');
-      /*numeroRefeicoes++;
-      numeroDeRefeicoes(this.numeroRefeicoes);*/
     } else if (status == satisfeito || status == excesso) {
       isPrecisaRefeicoes = true;
       print('Precisa de mais refeições: $isPrecisaRefeicoes');
-      /*numeroRefeicoes++;
-      numeroDeRefeicoes(this.numeroRefeicoes);*/
     }
   }
 
-  //calculo não realizado
   void numeroDeRefeicoes(int numeroRefeicoes) =>
       print("Numero de refeições: $numeroRefeicoes");
 }
