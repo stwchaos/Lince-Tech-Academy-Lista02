@@ -60,8 +60,6 @@ void main() {
   pessoa.totalDeCalorias();
   pessoa.consoleStatus();
   pessoa.numeroDeRefeicoes(numeroRefeicoes);
-  pessoa.precisaDeRefeicoes(true, Status.deficitExtremo, Status.deficit,
-      Status.satisfeito, Status.excesso, 0, Status.deficit);
 }
 
 class Produto {
@@ -186,24 +184,6 @@ class Pessoa {
         break;
       case Status.excesso:
         print("Status: Excesso de calorias");
-    }
-  }
-
-  //Não modifica o bool, fica sempre no false
-  void precisaDeRefeicoes(
-      bool isPrecisaRefeicoes,
-      Status deficitExtremo,
-      Status deficit,
-      Status satisfeito,
-      Status excesso,
-      int numeroRefeicoes,
-      Status status) {
-    if (status == deficitExtremo || status == deficit) {
-      isPrecisaRefeicoes = false;
-      print('Precisa de mais refeições: $isPrecisaRefeicoes');
-    } else if (status == satisfeito || status == excesso) {
-      isPrecisaRefeicoes = true;
-      print('Precisa de mais refeições: $isPrecisaRefeicoes');
     }
   }
 
